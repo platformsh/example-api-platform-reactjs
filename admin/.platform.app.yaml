@@ -1,0 +1,40 @@
+name: admin
+
+# The toolstack used to build the application.
+type: nodejs:6.9
+build:
+    flavor: none
+
+# The configuration of app when it is exposed to the web.
+web:
+    locations:
+        "/":
+            root: "build_platform"
+            index:
+                - "index.html"
+            expires: 300s
+            scripts: true
+            allow: false
+            rules:
+                \.(css|js|gif|jpe?g|png|ttf|eot|woff2?|otf|html|ico|svg?)$:
+                    allow: true
+                ^/robots\.txt$:
+                    allow: true
+
+disk: 1024
+mounts:
+  '/build_platform': 'shared:files/build_platform'
+  '/.tmp_platformsh': 'shared:files/tmp_platformsh'
+dependencies:
+  nodejs:
+    yarn: "*"
+
+
+# The hooks that will be performed when the package is deployed.
+hooks:
+    build: |
+      set -e
+      yarn install
+      npm run build
+    deploy: |
+      npm run buildenvvar
