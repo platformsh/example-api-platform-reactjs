@@ -4,7 +4,7 @@ import './App.css';
 import HydraAdmin from 'api-platform-admin/lib/hydra/HydraAdmin';
 import platformVar from 'platformsh_variables';
 console.log(platformVar);
-let entrypoint = Object.keys(platformVar).find(url => url.startsWith('https://api---'));
+let entrypoint = Object.keys(platformVar).find(url => url.startsWith('https://api.'));
 
 if(!entrypoint) {
   entrypoint = 'https://api---master-7rqtwti-kpfnplkpyfk2k.eu.platform.sh/';
