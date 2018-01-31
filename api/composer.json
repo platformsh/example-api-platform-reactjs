@@ -13,7 +13,8 @@
         "symfony/flex": "^1.0",
         "symfony/framework-bundle": "^4.0",
         "symfony/lts": "^4@dev",
-        "symfony/yaml": "^4.0"
+        "symfony/yaml": "^4.0",
+        "webonyx/graphql-php": "^0.11.5"
     },
     "require-dev": {
         "api-platform/schema-generator": "^2.1@beta"
